@@ -26,9 +26,29 @@ agent-side changes appear immediately.
 
 ---
 
-## Install
+## Quick start
 
-Requires **Python 3.10+**.
+Requires **Python 3.10+**. After cloning:
+
+```bash
+# macOS / Linux
+./run.sh
+
+# Windows
+run.bat              # (or double-click run.bat in Explorer)
+```
+
+The first run creates a `.venv` and installs everything (~30 seconds).
+Every run after that just launches the GUI.
+
+The database is created on first launch at `./data/agentmemo.db` (override
+with the `AGENTMEMO_DB_PATH` environment variable).
+
+---
+
+## Install manually (for development)
+
+If you'd rather drive the venv yourself:
 
 ```bash
 git clone https://github.com/your-org/AgentMEMO.git
@@ -39,32 +59,12 @@ python -m venv .venv
 # macOS/Linux:
 source .venv/bin/activate
 
-pip install -e .
+pip install -e ".[dev]"     # adds tests + linter
+# pip install -e ".[server]"  # for the MCP server (planned)
+
+agentmemo                   # launches the GUI
+python -m agentmemo         # equivalent
 ```
-
-For development tools (tests, linter):
-
-```bash
-pip install -e ".[dev]"
-```
-
-For the MCP server (HTTP transport, planned):
-
-```bash
-pip install -e ".[server]"
-```
-
----
-
-## Run
-
-```bash
-agentmemo              # launches the GUI
-python -m agentmemo    # equivalent
-```
-
-The database is created on first launch at `./data/agentmemo.db` (override with
-`AGENTMEMO_DB_PATH=/path/to/your.db`).
 
 ---
 
