@@ -1,0 +1,8 @@
+# Default — let git auto-detect for most files
+* text=auto
+
+# Shell scripts must stay LF on every platform; CRLF would break shebangs.
+*.sh text eol=lf
+
+# Batch files always CRLF for Windows cmd.exe.
+*.bat text eol=crlf
