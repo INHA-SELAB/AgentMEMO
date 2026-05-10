@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AgentMEMO · memo</title>
+<style>
+  :root {
+    color-scheme: light;
+    --fg: #222;
+    --muted: #777;
+    --border: #ececec;
+    --code-bg: #f6f8fa;
+    --accent: #c8b045;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: var(--fg);
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  body { padding: 14px 28px 48px; }
+  /* Drop the first element's top margin so it sits flush below the header
+     hairline rendered by the host widget. */
+  body > :first-child { margin-top: 0; }
+  h1, h2, h3, h4 {
+    margin-top: 1.2em;
+    margin-bottom: 0.4em;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  h1 { font-size: 1.7em; border-bottom: 1px solid var(--border); padding-bottom: .25em; }
+  h2 { font-size: 1.35em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; }
+  p, ul, ol, blockquote, table { margin: .6em 0; }
+  ul, ol { padding-left: 1.6em; }
+  blockquote {
+    margin: .8em 0;
+    padding: .2em 1em;
+    color: var(--muted);
+    border-left: 3px solid var(--border);
+    background: #fafafa;
+  }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .92em;
+    background: var(--code-bg);
+    padding: .1em .35em;
+    border-radius: 4px;
+  }
+  pre, pre.hl {
+    background: var(--code-bg);
+    padding: 12px 14px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: .9em;
+    line-height: 1.45;
+  }
+  pre code { background: none; padding: 0; }
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: .35em .7em;
+  }
+  th { background: #fafafa; }
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.2em 0;
+  }
+  a { color: #2a66c8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  input[type="checkbox"] { margin-right: .4em; vertical-align: middle; }
+
+  /* empty state */
+  .empty-state {
+    text-align: center;
+    color: #b8b8b8;
+    margin: 110px auto 0;
+    max-width: 360px;
+    user-select: none;
+  }
+  .empty-state .empty-glyph {
+    font-size: 56px;
+    line-height: 1;
+    color: #e0e0e0;
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .empty-state .empty-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  .empty-state .empty-hint {
+    font-size: 13px;
+    color: #b0b0b0;
+  }
+  .empty-state b { color: #555; font-weight: 600; }
+
+  /* Pygments-rendered highlight rules (injected at runtime) */
+  {pygments_css}
+</style>
+</head>
+<body>
+{body}
+</body>
+</html>

@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentmemo"
+version = "0.1.0"
+description = "A memo store for AI agents with a macOS Notes-style read-only viewer driven by an HTTP MCP server"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "AgentMEMO contributors" }]
+keywords = ["mcp", "notes", "pyside6", "ai-agents", "markdown"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Editors",
+]
+dependencies = [
+    "PySide6>=6.6",
+    "markdown-it-py[plugins]>=3.0",
+    "Pygments>=2.17",
+]
+
+[project.optional-dependencies]
+server = [
+    "mcp>=1.2",
+    "uvicorn>=0.27",
+    "starlette>=0.36",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-qt>=4.4",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+agentmemo = "agentmemo.app:main"
+agentmemo-server = "agentmemo.server.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/your-org/AgentMEMO"
+Issues  = "https://github.com/your-org/AgentMEMO/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"agentmemo.ui" = ["assets/*.html", "assets/*.qss", "assets/*.css", "assets/*.js"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

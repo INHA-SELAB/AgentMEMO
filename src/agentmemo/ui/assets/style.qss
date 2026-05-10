@@ -1,0 +1,118 @@
+/* AgentMEMO — read-only viewer (macOS Notes-inspired light theme) */
+
+QMainWindow,
+QWidget {
+    background: #ffffff;
+    color: #222;
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+}
+
+QStatusBar {
+    background: #fafafa;
+    border-top: 1px solid #ececec;
+    color: #777;
+}
+
+QSplitter::handle {
+    background: #ececec;
+    width: 1px;
+}
+
+/* hairline below the right-pane header (date/title/badges) */
+QWidget#headerSep {
+    background: #ececec;
+}
+
+/* ---------------------------------------------------------- left list pane */
+
+QLineEdit {
+    background: #f1f1f1;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding: 5px 8px;
+    selection-background-color: #ffe680;
+    selection-color: #222;
+}
+QLineEdit:focus {
+    border-color: #c8b045;
+    background: #ffffff;
+}
+
+#memoList {
+    background: #fbfbfa;
+    border: none;
+    border-right: 1px solid #ececec;
+    outline: 0;
+}
+#memoList::item {
+    border-bottom: 1px solid #efefef;
+    padding: 0;
+}
+/* "Pressed in" selection: row sinks into a slightly darker plate, with a
+   subtle ridge above and below to suggest an inset surface. */
+#memoList::item:selected {
+    background: #e6e6e3;
+    border-top: 1px solid #d2d2cf;
+    border-bottom: 1px solid #d2d2cf;
+}
+
+/* Inner labels inherit the row background instead of painting an opaque
+   white box on top of it (the "floating text on yellow" artifact). */
+#memoList QLabel { background: transparent; }
+
+QLabel[class="memo-header"]  { font-weight: 600; font-size: 13px; color: #1d1d1f; }
+QLabel[class="memo-preview"] { color: #777; }
+QLabel[class="memo-meta"]    { color: #999; font-size: 11px; }
+
+/* state-color dot at the start of each row */
+QLabel#stateDot {
+    font-size: 11px;
+    min-width: 10px;
+    max-width: 10px;
+    color: #cfcfcf;          /* fallback */
+    margin-top: 4px;
+}
+QLabel#stateDot[state="OPEN"]        { color: #6c8eef; }   /* blue   */
+QLabel#stateDot[state="IN_PROGRESS"] { color: #d97a00; }   /* orange */
+QLabel#stateDot[state="CLOSED"]      { color: #8a8a8a; }   /* dim grey */
+
+/* ----------------------------------------------------------- right pane */
+
+QLabel#dateLabel {
+    color: #999;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+}
+QLabel#idLabel {
+    color: #b8b8b8;
+    font-size: 11px;
+}
+QLabel#titleLabel {
+    color: #1d1d1f;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 4px 0 0 0;
+}
+
+/* ----------------------------------------------------------- pill badges */
+
+QLabel#typeBadge,
+QLabel#stateBadge {
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 2px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #fafafa;
+    color: #555;
+}
+
+QLabel#typeBadge[type="PLAN"]      { color: #6b4ec8; border-color: #d4c8ef; background: #f5f1ff; }
+QLabel#typeBadge[type="RESEARCH"]  { color: #2a66c8; border-color: #c8d9f0; background: #eff5ff; }
+QLabel#typeBadge[type="IMPLEMENT"] { color: #2a8a4a; border-color: #c5e6cf; background: #effaf2; }
+QLabel#typeBadge[type="REVIEW"]    { color: #d97a00; border-color: #f0d9b8; background: #fff5e8; }
+
+QLabel#stateBadge[state="OPEN"]        { color: #2a66c8; border-color: #c8d9f0; background: #eff5ff; }
+QLabel#stateBadge[state="IN_PROGRESS"] { color: #d97a00; border-color: #f0d9b8; background: #fff5e8; }
+QLabel#stateBadge[state="CLOSED"]      { color: #5e5e5e; border-color: #d8d8d8; background: #f0f0f0; }
